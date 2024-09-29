@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Inertia\Inertia;
 
 class TransactionController extends Controller
 {
@@ -11,8 +12,11 @@ class TransactionController extends Controller
     public function index()
     {
         $id = 1;
-        return view('finances', [
-            // 'user' => User::findOrFail($id)
+
+        $user = User::find(1);
+        // return 123;
+        return Inertia::render('User/Show', [
+          'user' => $user
         ]);
     }
 
