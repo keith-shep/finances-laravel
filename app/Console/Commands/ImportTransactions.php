@@ -61,7 +61,6 @@ class ImportTransactions extends Command
                 'ref1' => $ref1,
                 'ref2' => $ref2,
                 'ref3' => $ref3,
-                'description' => ''
             ]);
             
 
