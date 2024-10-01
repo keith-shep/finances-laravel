@@ -11,4 +11,10 @@ class Transaction extends Model
 
     protected $fillable = ['transaction_date', 'reference', 'credit_amount', 'debit_amount', 'ref1', 'ref2', 'ref3', 'description'];
 
+    protected function casts(): array
+    {
+        return [
+            'transaction_date' => 'datetime:Y-m-d',
+        ];
+    }
 }
