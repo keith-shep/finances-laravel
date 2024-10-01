@@ -21,27 +21,7 @@
     <body class="antialiased">
         <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
 
-            <table>
-                <thead>
-                    <tr>
-                        <th>Transaction Date</th>
-                        <th>Amount</th>
-                        <th>Category</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>29 Sept 2024</td>
-                        <td>200</td>
-                        <td>Test</td>
-                    </tr>
-                    <tr>
-                        <td>29 Sept 2024</td>
-                        <td>5</td>
-                        <td>NTUC</td>
-                    </tr>
-                </tbody>
-            </table>
+            
         </div>
     </body>
 </html>
