@@ -2,7 +2,7 @@
   <!-- <Layout> -->
     <Head title="finances" />
 
-    <table>
+    <table class="border">
         <thead>
             <tr>
                 <th>Transaction Date</th>
@@ -17,7 +17,7 @@
         </thead>
 
         <tbody>
-            <tr v-for="transaction in transactions">
+            <tr class="border" v-for="transaction in transactions">
                 <td>{{ transaction.transaction_date }}</td>
                 <td>{{ transaction.reference }}</td>
                 <td>{{ transaction.credit_amount }}</td>
