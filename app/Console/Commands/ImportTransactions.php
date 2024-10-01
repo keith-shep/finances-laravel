@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Transaction;
 use Illuminate\Console\Command;
 use Carbon\Carbon;
 
@@ -52,6 +53,17 @@ class ImportTransactions extends Command
             $ref1 = $entry[4] ?? '';
             $ref2 = $entry[5] ?? '';
             $ref3 = $entry[6] ?? '';
+
+            Transaction::create([
+                'transaction_date' => $date,
+                'reference' => $reference,
+                'amount' => $debit_amount, // change this
+                'ref1' => $ref1,
+                'ref2' => $ref2,
+                'ref3' => $ref3,
+                'description' => ''
+            ]);
+            
 
             
         }
