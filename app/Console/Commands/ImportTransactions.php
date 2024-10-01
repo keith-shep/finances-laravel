@@ -6,7 +6,6 @@ use App\Models\Transaction;
 use Illuminate\Console\Command;
 use Carbon\Carbon;
 
-
 class ImportTransactions extends Command
 {
     /**
@@ -39,13 +38,16 @@ class ImportTransactions extends Command
         $headers = array_shift($entries);
 
         $STARTING_LINE = 17;
+        $this->info('Starting import...');
         foreach ($entries as $index => $entry) {
+          
             if ($index < $STARTING_LINE) {
                 continue;
             }
             if (!isset($entry[0])) {
                 continue;
             }
+            
             $date = Carbon::parse($entry[0]);
             $reference = $entry[1] ?? '';
             $debit_amount = isset($entry[2]) ? (float) $entry[2] : 0;
@@ -54,18 +56,21 @@ class ImportTransactions extends Command
             $ref2 = $entry[5] ?? '';
             $ref3 = $entry[6] ?? '';
 
-            Transaction::create([
+            
+            $transaction = Transaction::create([
                 'transaction_date' => $date,
                 'reference' => $reference,
-                'amount' => $debit_amount, // change this
+                'credit_amount' => $credit_amount,
+                'debit_amount' => $debit_amount,
                 'ref1' => $ref1,
                 'ref2' => $ref2,
                 'ref3' => $ref3,
             ]);
-            
-
+          
+            $this->info('Imported transaction: ' . $transaction->id);
             
         }
+        $this->info('Importing finished.');
         // DB::table('workgroups')->insert($this->combineHeadersAndData($headers, $data));
         
         // $this->info('Workgroups imported successfully.');
