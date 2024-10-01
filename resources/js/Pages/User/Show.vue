@@ -16,7 +16,7 @@
         </thead>
 
         <tbody>
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700" v-for="transaction in transactions">
+            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700" v-for="transaction in transformedData">
                 <td class="px-6 py-3">{{ transaction.transaction_date }}</td>
                 <td class="px-6 py-3">{{ transaction.reference }}</td>
                 <td class="px-6 py-3">{{ transaction.debit_amount }}</td>
@@ -32,9 +32,16 @@
 
 <script setup>
 import { Head } from '@inertiajs/vue3'
+import { reactive, computed } from 'vue'
 
-defineProps({ 
+const props = defineProps({ 
   user: Object,
   transactions: Array,
 })
+
+const transformedData = computed(() => {
+    return props.transactions;
+})
+
+
 </script>
