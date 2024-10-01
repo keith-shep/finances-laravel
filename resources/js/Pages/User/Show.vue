@@ -7,8 +7,8 @@
             <tr>
                 <th class="px-6 py-3">Transaction Date</th>
                 <th class="px-6 py-3">Reference</th>
-                <th class="px-6 py-3">Credit Amount</th>
                 <th class="px-6 py-3">Debit Amount</th>
+                <th class="px-6 py-3">Credit Amount</th>
                 <th class="px-6 py-3">Ref1</th>
                 <th class="px-6 py-3">Ref2</th>
                 <th class="px-6 py-3">Ref3</th>
@@ -20,8 +20,8 @@
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700" v-for="transaction in transactions">
                 <td class="px-6 py-3">{{ transaction.transaction_date }}</td>
                 <td class="px-6 py-3">{{ transaction.reference }}</td>
-                <td class="px-6 py-3">{{ transaction.credit_amount }}</td>
                 <td class="px-6 py-3">{{ transaction.debit_amount }}</td>
+                <td class="px-6 py-3">{{ transaction.credit_amount }}</td>
                 <td class="px-6 py-3">{{ transaction.ref1 }}</td>
                 <td class="px-6 py-3">{{ transaction.ref2 }}</td>
                 <td class="px-6 py-3">{{ transaction.ref3 }}</td>
