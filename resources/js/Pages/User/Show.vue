@@ -1,27 +1,31 @@
 <template>
   <!-- <Layout> -->
     <Head title="finances" />
-    <!-- <h1>Welcome</h1> -->
-    <!-- <p>Hello {{ user.name }}, welcome to your first Inertia app!</p> -->
 
     <table>
         <thead>
             <tr>
                 <th>Transaction Date</th>
-                <th>Amount</th>
-                <th>Category</th>
+                <th>Reference</th>
+                <th>Credit Amount</th>
+                <th>Debit Amount</th>
+                <th>Ref1</th>
+                <th>Ref2</th>
+                <th>Ref3</th>
+                <th>Description</th>
             </tr>
         </thead>
+
         <tbody>
-            <tr>
-                <td>29 Sept 2024</td>
-                <td>200</td>
-                <td>Test</td>
-            </tr>
-            <tr>
-                <td>29 Sept 2024</td>
-                <td>5</td>
-                <td>NTUC</td>
+            <tr v-for="transaction in transactions">
+                <td>{{ transaction.transaction_date }}</td>
+                <td>{{ transaction.reference }}</td>
+                <td>{{ transaction.credit_amount }}</td>
+                <td>{{ transaction.debit_amount }}</td>
+                <td>{{ transaction.ref1 }}</td>
+                <td>{{ transaction.ref2 }}</td>
+                <td>{{ transaction.ref3 }}</td>
+                <td>{{ transaction.description }}</td>
             </tr>
         </tbody>
     </table>
@@ -32,5 +36,8 @@
 // import Layout from './Layout'
 import { Head } from '@inertiajs/vue3'
 
-defineProps({ user: Object })
+defineProps({ 
+  user: Object,
+  transactions: Array,
+})
 </script>
