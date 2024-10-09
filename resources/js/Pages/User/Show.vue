@@ -1,14 +1,15 @@
 <template>
     <Head title="finances" />
 
-    <form action="finances">
+    <form @submit.prevent="form.get('/finances')">
         <label for="start">Start date:</label>
-        <input type="date" id="start" name="from" :value="from" min="2024-01-01" max="2024-12-31" />
-
+        <input type="date" id="start" name="from" v-model="form.from" min="2024-01-01" max="2024-12-31" />
+        
         <label for="end">End date:</label>
-        <input type="date" id="end" name="to" :value="to" min="2024-01-01" max="2024-12-31" />
+        <input type="date" id="end" name="to" v-model="form.to" min="2024-01-01" max="2024-12-31" />
 
-        <button>Submit</button>
+        <!-- submit -->
+        <button type="submit" :disabled="form.processing">Submit</button>
     </form>
     
 
@@ -42,7 +43,7 @@
 </template>
 
 <script setup>
-import { Head } from '@inertiajs/vue3'
+import { Head, useForm } from '@inertiajs/vue3'
 import { reactive, computed } from 'vue'
 
 const props = defineProps({ 
@@ -54,6 +55,12 @@ const props = defineProps({
 
 const transformedData = computed(() => {
     return props.transactions;
+})
+
+
+const form = useForm({  
+    from: props.from,
+    to: props.to,
 })
 
 
