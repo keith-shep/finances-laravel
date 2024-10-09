@@ -1,6 +1,17 @@
 <template>
     <Head title="finances" />
 
+    <form action="finances">
+        <label for="start">Start date:</label>
+        <input type="date" id="start" name="from" value="2024-08-09" min="2024-01-01" max="2024-12-31" />
+
+        <label for="end">End date:</label>
+        <input type="date" id="end" name="to" value="2024-10-09" min="2024-01-01" max="2024-12-31" />
+
+        <button>Submit</button>
+    </form>
+    
+
     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
