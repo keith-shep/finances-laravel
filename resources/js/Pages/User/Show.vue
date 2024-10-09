@@ -3,10 +3,10 @@
 
     <form action="finances">
         <label for="start">Start date:</label>
-        <input type="date" id="start" name="from" value="2024-08-09" min="2024-01-01" max="2024-12-31" />
+        <input type="date" id="start" name="from" :value="from" min="2024-01-01" max="2024-12-31" />
 
         <label for="end">End date:</label>
-        <input type="date" id="end" name="to" value="2024-10-09" min="2024-01-01" max="2024-12-31" />
+        <input type="date" id="end" name="to" :value="to" min="2024-01-01" max="2024-12-31" />
 
         <button>Submit</button>
     </form>
@@ -48,6 +48,8 @@ import { reactive, computed } from 'vue'
 const props = defineProps({ 
   user: Object,
   transactions: Array,
+  from: String,
+  to: String,
 })
 
 const transformedData = computed(() => {
