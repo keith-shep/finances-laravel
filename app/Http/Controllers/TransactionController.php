@@ -21,7 +21,7 @@ class TransactionController extends Controller
     {
         $to = Carbon::parse($request->to);
         $from = Carbon::parse($request->from);
-        $transactions = $this->service->getTransactions($from, $to);
+        $transactions = $this->service->getTransactions(from: $from, to: $to);
         return Inertia::render('User/Show', [
           'transactions' => $transactions
         ]);
