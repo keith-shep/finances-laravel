@@ -24,7 +24,7 @@ class TransactionController extends Controller
 
         $transactions = $this->service->getTransactions(from: $from->startOfMonth(), to: $to->endOfMonth());
 
-        return Inertia::render('User/Show', [
+        return Inertia::render('Transaction/Index', [
             'transactions' => $transactions,
             'from' => isset($from) ? $from->toDateString() : null,
             'to' => isset($to) ? $to->toDateString() : null,
