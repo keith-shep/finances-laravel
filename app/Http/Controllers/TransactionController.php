@@ -13,7 +13,7 @@ class TransactionController extends Controller
 
     private TransactionService $service; 
 
-    public  function __construct(){
+    public function __construct(){
         $this->service = new TransactionService();
     }
 
@@ -29,6 +29,14 @@ class TransactionController extends Controller
             'from' => isset($from) ? $from->format('Y-m') : null,
             'to' => isset($to) ? $to->format('Y-m') : null,
         ]);
+    }
+
+    public function importCsv(Request $request)
+    {
+        $file = $request->file('file');
+        $this->service->importCsv($file);
+
+        return 'success';
     }
 
     /**

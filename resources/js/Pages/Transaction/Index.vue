@@ -14,6 +14,8 @@
                 <!-- submit -->
                 <button type="submit" :disabled="form.processing">Submit</button>
             </form>
+
+            <ImportCsv/>
         </aside>
 
         <div class="col-span-5">
@@ -55,6 +57,7 @@
 <script setup>
 import { Head, useForm } from '@inertiajs/vue3'
 import { reactive, computed } from 'vue'
+import ImportCsv from '../../Components/ImportCsv.vue';
 
 const props = defineProps({ 
   user: Object,
