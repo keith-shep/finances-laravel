@@ -19,9 +19,10 @@ class TransactionController extends Controller
 
     public function index(Request $request)
     {
-        $to = isset($request->to) ? Carbon::parse($request->to) : null;
         $from = isset($request->from) ? Carbon::parse($request->from) : null;
-        $transactions = $this->service->getTransactions(from: $from, to: $to);
+        $to = isset($request->to) ? Carbon::parse($request->to) : null;
+
+        $transactions = $this->service->getTransactions(from: $from->startOfMonth(), to: $to->endOfMonth());
 
         return Inertia::render('User/Show', [
             'transactions' => $transactions,
