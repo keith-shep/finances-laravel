@@ -9,7 +9,10 @@ use Inertia\Inertia;
 class TransactionService
 {
     public function getTransactions(?Carbon $from, ?Carbon $to){
-        $transactions = Transaction::whereBetween('transaction_date', [$from, $to])->get();
+        $transactions = Transaction::when(!empty($from), fn ($query) => $query->where('transaction_date', '>=', $from))
+                                    ->when(!empty($to), fn ($query) => $query->where('transaction_date', '<=', $to))
+                                    ->get();
+                                    
         return $transactions;
     }
 
