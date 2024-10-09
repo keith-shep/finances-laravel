@@ -2,17 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Transaction;
+use App\Services\TransactionService;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Carbon\Carbon;
 use Inertia\Inertia;
 
 class TransactionController extends Controller
 {
-    
-    public function index()
+
+    private TransactionService $service; 
+
+    public  function __construct(){
+        $this->service = new TransactionService();
+    }
+
+    public function index(Request $request)
     {
-        $transactions = Transaction::all();
+        $to = Carbon::parse($request->to);
+        $from = Carbon::parse($request->from);
+        $transactions = $this->service->getTransactions($from, $to);
         return Inertia::render('User/Show', [
           'transactions' => $transactions
         ]);
