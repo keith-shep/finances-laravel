@@ -26,8 +26,8 @@ class TransactionController extends Controller
 
         return Inertia::render('Transaction/Index', [
             'transactions' => $transactions,
-            'from' => isset($from) ? $from->toDateString() : null,
-            'to' => isset($to) ? $to->toDateString() : null,
+            'from' => isset($from) ? $from->format('Y-m') : null,
+            'to' => isset($to) ? $to->format('Y-m') : null,
         ]);
     }
 
