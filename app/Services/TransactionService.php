@@ -4,7 +4,6 @@ namespace App\Services;
 
 use App\Models\Transaction;
 use Carbon\Carbon;
-use Inertia\Inertia;
 
 class TransactionService
 {
