@@ -23,7 +23,7 @@ class TransactionService
         $entries = array_map('str_getcsv', file($file));
         $STARTING_LINE = 18;
         
-        DB::transaction(function () {
+        DB::transaction(function() use ($entries, $STARTING_LINE) {
             foreach ($entries as $index => $entry) {
                 if ($index < $STARTING_LINE) {
                     continue;
