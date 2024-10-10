@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\ImportCsv;
 use App\Services\TransactionService;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -36,6 +37,7 @@ class TransactionController extends Controller
     {
         $file = $request->file('file');
         try {
+            // ImportCsv::dispatch($file);
             return $this->service->importCsv($file);
         } catch (Exception $e) {
             return $e->getMessage();
