@@ -24,7 +24,6 @@ class TransactionService
         $STARTING_LINE = 18;
         
         DB::transaction(function () {
-            throw new Exception('smth wrong!');
             foreach ($entries as $index => $entry) {
                 if ($index < $STARTING_LINE) {
                     continue;
