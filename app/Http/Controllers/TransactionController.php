@@ -6,6 +6,7 @@ use App\Services\TransactionService;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Carbon\Carbon;
+use Exception;
 use Inertia\Inertia;
 
 class TransactionController extends Controller
@@ -34,9 +35,12 @@ class TransactionController extends Controller
     public function importCsv(Request $request)
     {
         $file = $request->file('file');
-        $this->service->importCsv($file);
+        try {
+            return $this->service->importCsv($file);
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
 
-        return 'success';
     }
 
     /**
