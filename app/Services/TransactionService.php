@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Enums\DBSCodes;
 use App\Models\Transaction;
 use Carbon\Carbon;
 use Exception;
@@ -65,7 +66,10 @@ class TransactionService
         $data = [];
 
         foreach ($dictionary as $key => $value) {
-            $labels[] = $key;
+            if ($key == 'UMC-S') {
+                $key = 'UMC_S';
+            }
+            $labels[] = DBSCodes::{$key}->value;
             $data[] = $value;
         }
 
