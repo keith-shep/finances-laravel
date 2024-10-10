@@ -22,9 +22,8 @@ class TransactionService
     public function importCsv(UploadedFile $file): bool {
         $entries = array_map('str_getcsv', file($file));
         $STARTING_LINE = 18;
-
-        DB::beginTransaction();
-        try{
+        
+        DB::transaction(function () {
             throw new Exception('smth wrong!');
             foreach ($entries as $index => $entry) {
                 if ($index < $STARTING_LINE) {
@@ -53,12 +52,8 @@ class TransactionService
                     'ref3' => $ref3,
                 ]);
             }
-            DB::commit();
-            return true;
-        } catch (Exception $e) {
-            DB::rollback();
-            throw $e;
-        }
+        });
+        return true;
     }
 
    
