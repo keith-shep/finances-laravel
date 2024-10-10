@@ -17,7 +17,7 @@
 
             <ImportCsv/>
 
-            <PieChart />
+            <PieChart :data="pie_chart_data"/>
         </aside>
 
         <div class="col-span-4">
@@ -67,10 +67,21 @@ const props = defineProps({
   transactions: Array,
   from: String,
   to: String,
+  pie_chart_data: Object
 })
 
 const transformedData = computed(() => {
     return props.transactions;
+})
+
+const pieChartData = computed(() => {
+
+    // console.log(props.pie_chart_data);
+    // const data = ref({
+    //     labels: ['January', 'February', 'March'],
+    //     datasets: [{ data: [40, 20, 12] }]
+    // })
+    // return props.transactions;
 })
 
 

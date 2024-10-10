@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\Transaction;
 use Carbon\Carbon;
 use Exception;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\DB;
 
@@ -53,6 +54,41 @@ class TransactionService
             }
         });
         return true;
+    }
+
+
+    public function formatPieChartData(array $dictionary) {
+        // labels: ['January', 'February', 'March'],
+        // datasets: [{ data: [40, 20, 12] }]
+
+        $labels = [];
+        $data = [];
+
+        foreach ($dictionary as $key => $value) {
+            $labels[] = $key;
+            $data[] = $value;
+        }
+
+        $datasets = [
+            ['data' => $data]
+        ];
+        
+        return [
+            'labels' => $labels, 
+            'datasets' => $datasets
+        ];
+    }
+
+
+    public function tranformToDictionary(Collection $transactions) {
+        $categories = $transactions->groupBy('reference');
+
+        $dict = [];
+        foreach($categories as $category_name => $transaction_collection) {
+            $dict[$category_name] = $transaction_collection->sum('debit_amount');
+        }
+
+        return $dict;
     }
 
    

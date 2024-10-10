@@ -18,16 +18,16 @@ import { ref } from 'vue'
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 
 
-// const props = defineProps({ 
-//     data: Object,
-//     options: Object
-// })
-
-
-const data = ref({
-    labels: ['January', 'February', 'March'],
-    datasets: [{ data: [40, 20, 12] }]
+const props = defineProps({ 
+    data: Object,
+    // options: Object
 })
+
+
+// const data = ref({
+//     labels: ['January', 'February', 'March'],
+//     datasets: [{ data: [40, 20, 12] }]
+// })
 
 const options = ref({
     responsive: true

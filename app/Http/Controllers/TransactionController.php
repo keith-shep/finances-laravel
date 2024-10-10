@@ -25,11 +25,14 @@ class TransactionController extends Controller
         $to = isset($request->to) ? Carbon::parse($request->to) : null;
 
         $transactions = $this->service->getTransactions(from: $from, to: $to);
+        $dictionary = $this->service->tranformToDictionary($transactions);
+        $pie_chart_data = $this->service->formatPieChartData($dictionary);
 
         return Inertia::render('Transaction/Index', [
             'transactions' => $transactions,
             'from' => isset($from) ? $from->format('Y-m') : null,
             'to' => isset($to) ? $to->format('Y-m') : null,
+            'pie_chart_data' => $pie_chart_data,
         ]);
     }
 
