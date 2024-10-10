@@ -1,21 +1,13 @@
 <template>
-    <Bar :data="data" :options="options" />
+    <Pie :data="data" :options="options" />
 </template>
 
 <script setup lang="ts">
-import {
-    Chart as ChartJS,
-    Title,
-    Tooltip,
-    Legend,
-    BarElement,
-    CategoryScale,
-    LinearScale
-} from 'chart.js'
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js'
 
-import { Bar } from 'vue-chartjs'
+import { Pie } from 'vue-chartjs'
 import { ref } from 'vue'
-ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
+ChartJS.register(ArcElement, Tooltip, Legend)
 
 
 const props = defineProps({ 
