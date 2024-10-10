@@ -11,8 +11,8 @@ use Illuminate\Support\Facades\DB;
 class TransactionService
 {
     public function getTransactions(?Carbon $from, ?Carbon $to){
-        $transactions = Transaction::when(!empty($from), fn ($query) => $query->where('transaction_date', '>=', $from))
-                                    ->when(!empty($to), fn ($query) => $query->where('transaction_date', '<=', $to))
+        $transactions = Transaction::when(!empty($from), fn ($query) => $query->where('transaction_date', '>=', $from->startOfMonth()))
+                                    ->when(!empty($to), fn ($query) => $query->where('transaction_date', '<=', $to->endOfMonth()))
                                     ->get();
                                     
         return $transactions;

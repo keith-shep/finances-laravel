@@ -23,7 +23,7 @@ class TransactionController extends Controller
         $from = isset($request->from) ? Carbon::parse($request->from) : null;
         $to = isset($request->to) ? Carbon::parse($request->to) : null;
 
-        $transactions = $this->service->getTransactions(from: $from->startOfMonth(), to: $to->endOfMonth());
+        $transactions = $this->service->getTransactions(from: $from, to: $to);
 
         return Inertia::render('Transaction/Index', [
             'transactions' => $transactions,
