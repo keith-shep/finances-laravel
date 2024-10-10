@@ -3,7 +3,7 @@
 
 
     <div class="grid grid-cols-6 gap-4 ">
-        <aside class="col-span-1">
+        <aside class="col-span-2">
             <form @submit.prevent="form.get('/finances')">
                 <label for="start">Start date:</label>
                 <input type="month" id="start" name="from" v-model="form.from" min="2024-01" max="2024-12" />
@@ -16,9 +16,11 @@
             </form>
 
             <ImportCsv/>
+
+            <PieChart />
         </aside>
 
-        <div class="col-span-5">
+        <div class="col-span-4">
             <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                 <thead class="text-xs text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
@@ -58,6 +60,7 @@
 import { Head, useForm } from '@inertiajs/vue3'
 import { reactive, computed } from 'vue'
 import ImportCsv from '../../Components/ImportCsv.vue';
+import PieChart from '../../Components/PieChart.vue';
 
 const props = defineProps({ 
   user: Object,
