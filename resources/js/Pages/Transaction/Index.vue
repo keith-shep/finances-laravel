@@ -27,12 +27,12 @@
                     </tr>
                 </thead>
 
-                <template v-if="!transformedData.length">
+                <template v-if="!transactions.length">
                     No data was found.
                 </template>
 
                 <tbody v-else>
-                    <tr v-for="transaction in transformedData" class="bg-white border-b">
+                    <tr v-for="transaction in transactions" class="bg-white border-b">
                         <td class="px-6 py-3">{{ transaction.transaction_date }}</td>
                         <td class="px-6 py-3">{{ transaction.reference }}</td>
                         <td class="px-6 py-3">{{ transaction.debit_amount }}</td>
@@ -67,23 +67,5 @@ const props = defineProps({
   pie_chart_data: Object,
   categories: Array,
 })
-
-const transformedData = computed(() => {
-    return props.transactions;
-})
-
-const pieChartData = computed(() => {
-
-    // console.log(props.pie_chart_data);
-    // const data = ref({
-    //     labels: ['January', 'February', 'March'],
-    //     datasets: [{ data: [40, 20, 12] }]
-    // })
-    // return props.transactions;
-})
-
-
-
-
 
 </script>
