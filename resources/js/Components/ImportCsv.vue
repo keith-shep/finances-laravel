@@ -10,7 +10,7 @@
         <progress v-if="form.progress" :value="form.progress.percentage" max="100">
             {{ form.progress.percentage }}%
         </progress>
-        <button type="submit">Submit</button>
+        <button class="block bg-blue-500 text-white rounded-full py-2 px-4" type="submit">Submit</button>
     </form>
     
 </template>
