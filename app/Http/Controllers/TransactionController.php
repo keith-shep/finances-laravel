@@ -26,7 +26,7 @@ class TransactionController extends Controller
     {
         $from = isset($request->from) ? Carbon::parse($request->from) : null;
         $to = isset($request->to) ? Carbon::parse($request->to) : null;
-        $category_ids = $request->category_ids ?? null;
+        $category_ids = $request->category_ids ?? [];
 
         $transactions = $this->service->getTransactions(from: $from, to: $to, category_ids: $category_ids);
         $dictionary = $this->service->tranformToDictionary($transactions, 'category_id');
@@ -38,7 +38,8 @@ class TransactionController extends Controller
             'from' => isset($from) ? $from->format('Y-m') : null,
             'to' => isset($to) ? $to->format('Y-m') : null,
             'pie_chart_data' => $pie_chart_data,
-            'categories' => $categories
+            'categories' => $categories,
+            'category_ids' => $category_ids
         ]);
     }
 

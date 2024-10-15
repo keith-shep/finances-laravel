@@ -5,7 +5,12 @@
     <div class="grid grid-cols-6 gap-4 ">
         <aside class="col-span-2">
             
-            <Filters :options="categories.data"/>
+            <Filters 
+                :options="categories.data"
+                :to="to"
+                :from="from"
+                :category_ids="category_ids"
+            />
             <ImportCsv />
 
             <PieChart :data="pie_chart_data"/>
@@ -66,6 +71,7 @@ const props = defineProps({
   to: String,
   pie_chart_data: Object,
   categories: Array,
+  category_ids: Array,
 })
 
 </script>

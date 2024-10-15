@@ -27,13 +27,16 @@ import { useForm } from '@inertiajs/vue3'
 
 const props = defineProps({ 
     options: Array,
+    to: String,
+    from: String,
+    category_ids: Array
 })
 
 
 const form = useForm({  
     from: props.from,
     to: props.to,
-    category_ids: []
+    category_ids: props.category_ids
 })
 
 
