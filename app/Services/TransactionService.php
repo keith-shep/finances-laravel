@@ -12,9 +12,10 @@ use Illuminate\Support\Facades\DB;
 
 class TransactionService
 {
-    public function getTransactions(?Carbon $from, ?Carbon $to){
+    public function getTransactions(?Carbon $from, ?Carbon $to, ?array $category_ids){
         $transactions = Transaction::when(!empty($from), fn ($query) => $query->where('transaction_date', '>=', $from->startOfMonth()))
                                     ->when(!empty($to), fn ($query) => $query->where('transaction_date', '<=', $to->endOfMonth()))
+                                    ->when(!empty($category_ids), fn ($query) => $query->whereIn('category_id', $category_ids))
                                     ->get();
                                     
         return $transactions;
