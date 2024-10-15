@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Enums\DBSCodes;
+use App\Models\Category;
 use App\Models\Transaction;
 use Carbon\Carbon;
 use Exception;
@@ -71,10 +72,7 @@ class TransactionService
         $data = [];
 
         foreach ($dictionary as $key => $value) {
-            if ($key == 'UMC-S') {
-                $key = 'UMC_S';
-            }
-            $labels[] = DBSCodes::{$key}->value;
+            $labels[] = $key;
             $data[] = $value;
         }
 
@@ -93,10 +91,17 @@ class TransactionService
 
 
     public function tranformToDictionary(Collection $transactions, string $group_by) {
-        $categories = $transactions->groupBy($group_by);
-
+        // TODO: Clean up logic, use associations
+        $transactions_by_categories = $transactions->groupBy($group_by);
+        $categories = Category::whereIn('id', $transactions_by_categories->keys())->get();
         $dict = [];
-        foreach($categories as $category_name => $transaction_collection) {
+        foreach($transactions_by_categories as $category_id => $transaction_collection) {
+            $category = $categories->find($category_id);
+            if (empty($category_id)) {
+                $category_name = 'uncategorized';
+            } else {
+                $category_name = $category->name;
+            }
             $dict[$category_name] = $transaction_collection->sum('debit_amount');
         }
 
