@@ -41,7 +41,7 @@
                 </template>
 
                 <tbody v-else>
-                    <tr v-for="transaction in transformedData" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700" >
+                    <tr v-for="transaction in transformedData" class="bg-white border-b">
                         <td class="px-6 py-3">{{ transaction.transaction_date }}</td>
                         <td class="px-6 py-3">{{ transaction.reference }}</td>
                         <td class="px-6 py-3">{{ transaction.debit_amount }}</td>
