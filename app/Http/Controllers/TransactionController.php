@@ -29,7 +29,7 @@ class TransactionController extends Controller
         $category_ids = $request->category_ids ?? null;
 
         $transactions = $this->service->getTransactions(from: $from, to: $to, category_ids: $category_ids);
-        $dictionary = $this->service->tranformToDictionary($transactions);
+        $dictionary = $this->service->tranformToDictionary($transactions, 'category_id');
         $pie_chart_data = $this->service->formatPieChartData($dictionary);
         $categories = CategoryResource::collection(Category::all(['id', 'name']));
         

@@ -92,8 +92,8 @@ class TransactionService
     }
 
 
-    public function tranformToDictionary(Collection $transactions) {
-        $categories = $transactions->groupBy('reference');
+    public function tranformToDictionary(Collection $transactions, string $group_by) {
+        $categories = $transactions->groupBy($group_by);
 
         $dict = [];
         foreach($categories as $category_name => $transaction_collection) {
