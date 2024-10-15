@@ -83,10 +83,7 @@ const pieChartData = computed(() => {
 })
 
 
-const form = useForm({  
-    from: props.from,
-    to: props.to,
-})
+
 
 
 </script>
