@@ -16,11 +16,12 @@ import { useForm } from '@inertiajs/vue3'
 const props = defineProps({ 
     transaction_id: Number,
     options: Array,
+    selected_category_id: Number
 })
 
 
 const form = useForm({  
-    selected: null
+    selected: props.selected_category_id ?? null
 })
 
 </script>
