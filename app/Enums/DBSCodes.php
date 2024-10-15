@@ -11,4 +11,5 @@ enum DBSCodes: string
    case SAL = 'Salary';
    case ITR = 'Funds Transfer';
    case BILL = 'Bill Payment';
+   case AWL = 'Cash Withdrawal';
 }
