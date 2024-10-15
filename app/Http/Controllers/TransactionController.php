@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\CategoryResource;
 use App\Jobs\ImportCsv;
+use App\Models\Category;
 use App\Services\TransactionService;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -27,12 +29,14 @@ class TransactionController extends Controller
         $transactions = $this->service->getTransactions(from: $from, to: $to);
         $dictionary = $this->service->tranformToDictionary($transactions);
         $pie_chart_data = $this->service->formatPieChartData($dictionary);
-
+        $categories = CategoryResource::collection(Category::all(['id', 'name']));
+        
         return Inertia::render('Transaction/Index', [
             'transactions' => $transactions,
             'from' => isset($from) ? $from->format('Y-m') : null,
             'to' => isset($to) ? $to->format('Y-m') : null,
             'pie_chart_data' => $pie_chart_data,
+            'categories' => $categories
         ]);
     }
 

@@ -28,6 +28,7 @@
                         <th class="px-6 py-3">Reference</th>
                         <th class="px-6 py-3">Debit Amount</th>
                         <th class="px-6 py-3">Credit Amount</th>
+                        <th class="px-6 py-3">Category</th>
                         <th class="px-6 py-3">Ref1</th>
                         <th class="px-6 py-3">Ref2</th>
                         <th class="px-6 py-3">Ref3</th>
@@ -45,6 +46,9 @@
                         <td class="px-6 py-3">{{ transaction.reference }}</td>
                         <td class="px-6 py-3">{{ transaction.debit_amount }}</td>
                         <td class="px-6 py-3">{{ transaction.credit_amount }}</td>
+                        <!-- <td class="px-6 py-3">{{ transaction.category }}</td> -->
+                        <td class="px-6 py-3"><Dropdown :options="categories.data"/></td>
+                        
                         <td class="px-6 py-3">{{ transaction.ref1 }}</td>
                         <td class="px-6 py-3">{{ transaction.ref2 }}</td>
                         <td class="px-6 py-3">{{ transaction.ref3 }}</td>
@@ -61,13 +65,15 @@ import { Head, useForm } from '@inertiajs/vue3'
 import { reactive, computed } from 'vue'
 import ImportCsv from '../../Components/ImportCsv.vue';
 import PieChart from '../../Components/PieChart.vue';
+import Dropdown from '../../Components/Dropdown.vue';
 
 const props = defineProps({ 
   user: Object,
   transactions: Array,
   from: String,
   to: String,
-  pie_chart_data: Object
+  pie_chart_data: Object,
+  categories: Array,
 })
 
 const transformedData = computed(() => {
