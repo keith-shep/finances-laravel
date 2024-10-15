@@ -5,7 +5,7 @@
     <div class="grid grid-cols-6 gap-4 ">
         <aside class="col-span-2">
             
-            <Checkbox :options="categories.data"/>
+            <Filters :options="categories.data"/>
             <ImportCsv />
 
             <PieChart :data="pie_chart_data"/>
@@ -57,7 +57,7 @@ import { reactive, computed } from 'vue'
 import ImportCsv from '../../Components/ImportCsv.vue';
 import PieChart from '../../Components/PieChart.vue';
 import Dropdown from '../../Components/Dropdown.vue';
-import Checkbox from '../../Components/Checkbox.vue';
+import Filters from '../../Components/Filters.vue';
 
 const props = defineProps({ 
   user: Object,
