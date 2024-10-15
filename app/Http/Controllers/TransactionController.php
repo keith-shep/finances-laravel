@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Resources\CategoryResource;
 use App\Jobs\ImportCsv;
 use App\Models\Category;
+use App\Models\Transaction;
 use App\Services\TransactionService;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -81,9 +82,13 @@ class TransactionController extends Controller
     //     //
     // }
 
-    public function update(Request $request, string $id)
+    public function update(Request $request, Transaction $transaction)
     {
-        //
+        $category_id = $request->selected;
+        $transaction->category_id = $category_id;
+        $transaction->save();
+
+        return to_route('finances.index', [], 303);
     }
 
     public function destroy(string $id)

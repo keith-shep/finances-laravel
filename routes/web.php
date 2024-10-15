@@ -19,5 +19,6 @@ Route::get('/', function () {
 });
 
 
-Route::get('/finances', [TransactionController::class, 'index']);
+Route::get('/finances', [TransactionController::class, 'index'])->name('finances.index');
+Route::put('/finances/{transaction}', [TransactionController::class, 'update'])->name('finances.update');
 Route::post('/importCsv', [TransactionController::class, 'importCsv']);

@@ -47,7 +47,7 @@
                         <td class="px-6 py-3">{{ transaction.debit_amount }}</td>
                         <td class="px-6 py-3">{{ transaction.credit_amount }}</td>
                         <!-- <td class="px-6 py-3">{{ transaction.category }}</td> -->
-                        <td class="px-6 py-3"><Dropdown :options="categories.data"/></td>
+                        <td class="px-6 py-3"><Dropdown :options="categories.data" :transaction_id="transaction.id"/></td>
                         
                         <td class="px-6 py-3">{{ transaction.ref1 }}</td>
                         <td class="px-6 py-3">{{ transaction.ref2 }}</td>
