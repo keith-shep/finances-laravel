@@ -41,6 +41,10 @@ class TransactionService
 
                 $raw_string = $date . $reference . $debit_amount . $credit_amount . $ref1 . $ref2 . $ref3;
                 $base64_encoded = base64_encode($raw_string);
+
+                if (Transaction::where('base64', $base64_encoded)->exists()) {
+                    continue;
+                }
                 
                 $transaction = Transaction::create([
                     'transaction_date' => $date,
