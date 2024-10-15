@@ -42,6 +42,8 @@ class TransactionService
                 $ref2 = $entry[5] ?? '';
                 $ref3 = $entry[6] ?? '';
 
+                $raw_string = $date . $reference . $debit_amount . $credit_amount . $ref1 . $ref2 . $ref3;
+                $base64_encoded = base64_encode($raw_string);
                 
                 $transaction = Transaction::create([
                     'transaction_date' => $date,
@@ -51,6 +53,7 @@ class TransactionService
                     'ref1' => $ref1,
                     'ref2' => $ref2,
                     'ref3' => $ref3,
+                    'base64' => $base64_encoded,
                 ]);
             }
         });
