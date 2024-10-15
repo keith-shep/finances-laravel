@@ -21,13 +21,10 @@ class TransactionService
     }
 
 
-    public function importCsv(UploadedFile $file): bool {
-        $entries = array_map('str_getcsv', file($file));
-        $STARTING_LINE = 18;
-        
-        DB::transaction(function() use ($entries, $STARTING_LINE) {
+    public function importCsv(array $entries, int $starting_line): bool {
+        DB::transaction(function() use ($entries, $starting_line) {
             foreach ($entries as $index => $entry) {
-                if ($index < $STARTING_LINE) {
+                if ($index < $starting_line) {
                     continue;
                 }
                 if (!isset($entry[0])) {

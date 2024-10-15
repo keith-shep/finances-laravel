@@ -18,6 +18,8 @@ class ImportCsv implements ShouldQueue
     }
     
     public function handle(TransactionService $service): void {
-        $service->importCsv($this->file);
+        $entries = array_map('str_getcsv', file($this->file));
+        $STARTING_LINE = 18;
+        $service->importCsv($entries, $STARTING_LINE);
     }
 }

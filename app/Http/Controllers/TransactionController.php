@@ -41,7 +41,9 @@ class TransactionController extends Controller
         $file = $request->file('file');
         try {
             // ImportCsv::dispatch($file);
-            return $this->service->importCsv($file);
+            $entries = array_map('str_getcsv', file($file));
+            $STARTING_LINE = 18;
+            return $this->service->importCsv($entries, $STARTING_LINE);
         } catch (Exception $e) {
             return $e->getMessage();
         }
