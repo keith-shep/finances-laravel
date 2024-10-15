@@ -15,7 +15,9 @@
                 <button class="block bg-blue-500 text-white rounded-full py-2 px-4" type="submit" :disabled="form.processing">Filter</button>
             </form>
 
-            <ImportCsv/>
+
+            <Checkbox :options="categories.data"/>
+            <ImportCsv />
 
             <PieChart :data="pie_chart_data"/>
         </aside>
@@ -66,6 +68,7 @@ import { reactive, computed } from 'vue'
 import ImportCsv from '../../Components/ImportCsv.vue';
 import PieChart from '../../Components/PieChart.vue';
 import Dropdown from '../../Components/Dropdown.vue';
+import Checkbox from '../../Components/Checkbox.vue';
 
 const props = defineProps({ 
   user: Object,
