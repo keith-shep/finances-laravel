@@ -24,9 +24,15 @@ class CategorySeeder extends Seeder
 
         Category::create([
             'name' => CategoryTypes::OnlineShopping,
-        ])->categoryFilters()->create([
-            'column_name' => 'ref1',
-            'pattern' => 'AMAZON',
+        ])->categoryFilters()->createMany([
+            [
+                'column_name' => 'ref1',
+                'pattern' => 'AMAZON',
+            ],
+            [
+                'column_name' => 'ref1',
+                'pattern' => 'LAZADA',
+            ]
         ]);
 
         Category::create([
