@@ -109,38 +109,28 @@ class TransactionService
     }
 
 
-    public function categorize(Collection $transactions) {
+    public function categorize(Collection $transactions): void {
         $categories = Category::with('categoryFilters')
                                 ->get();
 
-
-        
         foreach($categories as $category) {
-            // foreach($category->categoryFilters as $filter) {
-            //     $pattern = $filter->pattern;
-            //     $column_name = $filter->column_name;
-            //     dump($pattern, $column_name);
-            // }
+            self::filterTransactionsBy($category);
         }
 
-
-        // $category = Category::find(1);
-        // dd($categories[0]);
-        // dd($categories[0]->categoryFilters());
-        
+        return;        
     }
 
 
-    public function filterTransactionsBy(Category $category): Collection {
+    public function filterTransactionsBy(Category $category) {
         $category_filters = $category->categoryFilters;
         $query = Transaction::query();
         foreach($category_filters as $category_filter) {
             $column_name = $category_filter->column_name;
-            $pattern = $category_filter->pattern;            
-            $query->orWhere($column_name, $pattern);
+            $pattern = $category_filter->pattern;
+            $query->orWhereLike($column_name, $pattern);
         }
 
-        return $query->get();
+        return $query->update(['category_id' => $category->id]);
     }
 
    

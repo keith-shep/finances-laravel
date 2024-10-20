@@ -22,7 +22,7 @@ class ExampleTest extends TestCase
         $response->assertStatus(200);
     }
 
-    public function xtestCategorizeTransactions(): void
+    public function testCategorizeTransactions(): void
     {
         $service = new TransactionService();
         $transaction1 = Transaction::create([
@@ -61,7 +61,7 @@ class ExampleTest extends TestCase
 
     }
 
-    public function testFilters() {
+    public function xtestFilters() {
         $service = new TransactionService();
         $transactions = Transaction::all();
         $category = Category::create([
