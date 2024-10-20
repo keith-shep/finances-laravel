@@ -74,7 +74,31 @@ class CategorySeeder extends Seeder
             [
                 'column_name' => 'ref1',
                 'pattern' => 'BAD HABITS',
-            ], 
+            ],
+            [
+                'column_name' => 'ref2',
+                'pattern' => 'TIAN FU REN JIA',
+            ],
+            [
+                'column_name' => 'ref2',
+                'pattern' => 'MAXIUS TRADING',
+            ],
+            [
+                'column_name' => 'ref2',
+                'pattern' => 'NOORSULTHAN SABANA',
+            ],
+            [
+                'column_name' => 'ref2',
+                'pattern' => 'SHAFIMA FAMILY FOOD',
+            ],
+            [
+                'column_name' => 'ref2',
+                'pattern' => 'PAK DIN KEDAI KOPI',
+            ],
+            [
+                'column_name' => 'ref2',
+                'pattern' => "DAN'S KITCHEN",
+            ],
         ]);
 
         Category::create([
