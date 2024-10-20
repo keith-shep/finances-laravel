@@ -1,11 +1,13 @@
 <template>    
     
     <form>
-        <label class="block" for="start">Start date:</label>
-        <input type="month" id="start" name="from" v-model="form.from" min="2024-01" max="2024-12" @change="form.get('/finances')"/>
-        
-        <label class="block" for="end">End date:</label>
-        <input type="month" id="end" name="to" v-model="form.to" min="2024-01" max="2024-12" @change="form.get('/finances')"/>
+        <div class="flex">
+            <label class="block" for="start">From:</label>
+            <input type="month" id="start" name="from" v-model="form.from" min="2024-01" max="2024-12" @change="form.get('/finances')"/>
+            
+            <label class="block" for="end">To:</label>
+            <input type="month" id="end" name="to" v-model="form.to" min="2024-01" max="2024-12" @change="form.get('/finances')"/>
+        </div>
 
         
         <template v-for="option in options">
