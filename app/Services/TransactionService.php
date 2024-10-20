@@ -131,7 +131,7 @@ class TransactionService
     }
 
 
-    public function filter(Category $category) {
+    public function filterTransactionBy(Category $category): Collection {
         $category_filters = $category->categoryFilters;
         $query = Transaction::query();
         foreach($category_filters as $category_filter) {
