@@ -31,23 +31,23 @@ class CategorySeeder extends Seeder
 
         Category::create([
             'name' => CategoryTypes::Groceries,
-        ])->categoryFilters()->create([
-            'column_name' => 'ref1',
-            'pattern' => 'NTUC',
-        ]);
-
-        Category::create([
-            'name' => CategoryTypes::Groceries,
-        ])->categoryFilters()->create([
-            'column_name' => 'ref1',
-            'pattern' => 'FAIRPRICE',
-        ]);
-
-        Category::create([
-            'name' => CategoryTypes::Groceries,
-        ])->categoryFilters()->create([
-            'column_name' => 'ref1',
-            'pattern' => 'REDMART',
+        ])->categoryFilters()->createMany([
+            [
+                'column_name' => 'ref1',
+                'pattern' => 'NTUC',
+            ],
+            [
+                'column_name' => 'ref2',
+                'pattern' => 'NTUC',
+            ],
+            [
+                'column_name' => 'ref1',
+                'pattern' => 'FAIRPRICE',
+            ],
+            [
+                'column_name' => 'ref1',
+                'pattern' => 'REDMART',
+            ]
         ]);
 
         Category::create([
