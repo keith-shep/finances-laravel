@@ -13,6 +13,8 @@
             />
             <ImportCsv />
 
+            <button @click="router.post('/categorize')">categorize</button>
+
             <PieChart :data="pie_chart_data"/>
         </aside>
 
@@ -57,6 +59,7 @@
 </template>
 
 <script setup>
+import { router } from '@inertiajs/vue3'
 import { Head, useForm } from '@inertiajs/vue3'
 import { reactive, computed } from 'vue'
 import ImportCsv from '../../Components/ImportCsv.vue';
