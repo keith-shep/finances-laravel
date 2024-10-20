@@ -39,9 +39,6 @@ const form = useForm({
     category_ids: props.category_ids
 })
 
-function test() {
-    alert('test');
-}
 
 
 </script>
