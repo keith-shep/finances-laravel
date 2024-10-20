@@ -127,7 +127,7 @@ class TransactionService
         foreach($category_filters as $category_filter) {
             $column_name = $category_filter->column_name;
             $pattern = $category_filter->pattern;
-            $query->orWhereLike($column_name, $pattern);
+            $query->orWhereLike($column_name, "%$pattern%");
         }
 
         return $query->update(['category_id' => $category->id]);

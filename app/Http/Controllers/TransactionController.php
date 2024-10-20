@@ -57,6 +57,12 @@ class TransactionController extends Controller
 
     }
 
+    public function categorize(Request $request){
+        $transactions = Transaction::all();
+        $this->service->categorize($transactions);
+        return to_route('finances.index', [], 303);
+    }
+
     /**
      * Show the form for creating a new resource.
      */
