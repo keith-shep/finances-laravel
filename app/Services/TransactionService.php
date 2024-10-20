@@ -7,7 +7,7 @@ use App\Models\Category;
 use App\Models\Transaction;
 use Carbon\Carbon;
 use Exception;
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Collection;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\DB;
 
@@ -106,6 +106,41 @@ class TransactionService
         }
 
         return $dict;
+    }
+
+
+    public function categorize(Collection $transactions) {
+        $categories = Category::with('categoryFilters')
+                                ->get();
+
+
+        
+        foreach($categories as $category) {
+            // foreach($category->categoryFilters as $filter) {
+            //     $pattern = $filter->pattern;
+            //     $column_name = $filter->column_name;
+            //     dump($pattern, $column_name);
+            // }
+        }
+
+
+        // $category = Category::find(1);
+        // dd($categories[0]);
+        // dd($categories[0]->categoryFilters());
+        
+    }
+
+
+    public function filter(Category $category) {
+        $category_filters = $category->categoryFilters;
+        $query = Transaction::query();
+        foreach($category_filters as $category_filter) {
+            $column_name = $category_filter->column_name;
+            $pattern = $category_filter->pattern;            
+            $query->orWhere($column_name, $pattern);
+        }
+
+        return $query->get();
     }
 
    
