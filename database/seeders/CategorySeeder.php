@@ -57,6 +57,27 @@ class CategorySeeder extends Seeder
         ]);
 
         Category::create([
+            'name' => CategoryTypes::DiningOut,
+        ])->categoryFilters()->createMany([
+            [
+                'column_name' => 'ref1',
+                'pattern' => 'KIN BA BA',
+            ],
+            [
+                'column_name' => 'ref1',
+                'pattern' => "STUFF'D",
+            ],
+            [
+                'column_name' => 'ref1',
+                'pattern' => "MCDONALD'S",
+            ],
+            [
+                'column_name' => 'ref1',
+                'pattern' => 'BAD HABITS',
+            ], 
+        ]);
+
+        Category::create([
             'name' => CategoryTypes::PublicTransport,
         ])->categoryFilters()->create([
             'column_name' => 'ref1',
