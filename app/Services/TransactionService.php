@@ -13,10 +13,11 @@ use Illuminate\Support\Facades\DB;
 
 class TransactionService
 {
-    public function getTransactions(?Carbon $from, ?Carbon $to, ?array $category_ids){
+    public function getTransactions(?Carbon $from, ?Carbon $to, ?array $category_ids, string $sort_by = ''){
         $transactions = Transaction::when(!empty($from), fn ($query) => $query->where('transaction_date', '>=', $from->startOfMonth()))
                                     ->when(!empty($to), fn ($query) => $query->where('transaction_date', '<=', $to->endOfMonth()))
                                     ->when(!empty($category_ids), fn ($query) => $query->whereIn('category_id', $category_ids))
+                                    ->when(!empty($sort_by), fn ($query) => $query->orderBy($sort_by, 'desc'))
                                     ->get();
                                     
         return $transactions;

@@ -24,11 +24,12 @@ class TransactionController extends Controller
 
     public function index(Request $request)
     {
+        $sort_by = 'debit_amount';
         $from = isset($request->from) ? Carbon::parse($request->from) : null;
         $to = isset($request->to) ? Carbon::parse($request->to) : null;
         $category_ids = $request->category_ids ?? [];
 
-        $transactions = $this->service->getTransactions(from: $from, to: $to, category_ids: $category_ids);
+        $transactions = $this->service->getTransactions(from: $from, to: $to, category_ids: $category_ids, sort_by: $sort_by);
         $dictionary = $this->service->tranformToDictionary($transactions, 'category_id');
         $pie_chart_data = $this->service->formatPieChartData($dictionary);
         $categories = CategoryResource::collection(Category::all(['id', 'name']));
