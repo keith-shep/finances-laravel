@@ -47,6 +47,9 @@ class TransactionController extends Controller
     public function importCsv(Request $request)
     {
         $file = $request->file('file');
+        if (empty($file)) {
+            return 'error: please upload a csv file.';
+        }
         try {
             // ImportCsv::dispatch($file);
             $entries = array_map('str_getcsv', file($file));
