@@ -6,7 +6,18 @@
 
     
     <form @submit.prevent="submit">
-        <input type="file" @input="form.file = $event.target.files[0]" accept=".csv"/>
+        <label for='upload_csv'>Upload CSV:</label>
+        <input id='upload_csv' class='ml-3' type="file" @input="form.file = $event.target.files[0]" accept=".csv"/>
+        
+        <label for='account_name'>Account Name:</label>
+        <input id='account_name' v-model='form.account_name' class='border-2 ml-3' type="input"/>
+
+        <label for='account_type'>Account Type:</label>
+        <select v-model="form.account_type">
+            <option value="individual">Individual</option>
+            <option value="joint">Joint</option>
+        </select>
+        
         <button class="block bg-blue-500 text-white rounded-full py-2 px-4" type="submit">Import</button>
     </form>
     
@@ -22,7 +33,9 @@ function submit() {
 }
 
 const form = useForm({  
-    file: null
+    file: null,
+    account_name: '',
+    account_type: '',
 })
 
 

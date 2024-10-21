@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Enums\DBSCodes;
+use App\Models\BankAccount;
 use App\Models\Category;
 use App\Models\Transaction;
 use Carbon\Carbon;
@@ -24,8 +25,8 @@ class TransactionService
     }
 
 
-    public function importCsv(array $entries, int $starting_line): bool {
-        DB::transaction(function() use ($entries, $starting_line) {
+    public function importCsv(array $entries, int $starting_line, BankAccount $bank_account): bool {
+        DB::transaction(function() use ($entries, $starting_line, $bank_account) {
             foreach ($entries as $index => $entry) {
                 if ($index < $starting_line) {
                     continue;
@@ -58,6 +59,7 @@ class TransactionService
                     'ref2' => $ref2,
                     'ref3' => $ref3,
                     'base64' => $base64_encoded,
+                    'bank_account_id' => $bank_account->id
                 ]);
             }
         });

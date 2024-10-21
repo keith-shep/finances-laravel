@@ -18,7 +18,8 @@ class Transaction extends Model
         'ref2',
         'ref3',
         'description',
-        'base64'
+        'base64',
+        'bank_account_id'
     ];
 
     protected function casts(): array

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\CategoryResource;
 use App\Jobs\ImportCsv;
+use App\Models\BankAccount;
 use App\Models\Category;
 use App\Models\Transaction;
 use App\Services\TransactionService;
@@ -50,11 +51,24 @@ class TransactionController extends Controller
         if (empty($file)) {
             return 'error: please upload a csv file.';
         }
+
+        $account_name = $request->account_name;
+        $account_type = $request->account_type;
+        $bank_account = BankAccount::create([
+            'name' => $account_name,
+            'type' => $account_type,
+        ]);
+
+        $starting_line_map = [
+            'individual' => 18,
+            'joint' => 21
+        ];
+
         try {
             // ImportCsv::dispatch($file);
             $entries = array_map('str_getcsv', file($file));
-            $STARTING_LINE = 18;
-            return $this->service->importCsv($entries, $STARTING_LINE);
+            $STARTING_LINE = $starting_line_map[$bank_account->type];
+            return $this->service->importCsv($entries, $STARTING_LINE, $bank_account);
         } catch (Exception $e) {
             return $e->getMessage();
         }

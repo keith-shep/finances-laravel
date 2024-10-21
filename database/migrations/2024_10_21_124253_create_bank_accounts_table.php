@@ -17,6 +17,10 @@ return new class extends Migration
             $table->enum('type', ['individual', 'joint']);
             $table->timestamps();
         });
+
+        Schema::table('transactions', function (Blueprint $table) {
+            $table->foreignId('bank_account_id')->default(0)->constrained()->after('category_id');
+        });
     }
 
     /**
@@ -25,5 +29,10 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('bank_accounts');
+
+        Schema::table('transactions', function (Blueprint $table) {
+            $table->dropForeign(['bank_account_id']);
+            $table->dropColumn('bank_account_id');
+        });
     }
 };
