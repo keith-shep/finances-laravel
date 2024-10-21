@@ -10,10 +10,10 @@
         </div>
 
         
-        <template v-for="option in options">
+        <div v-for="option in options">
             <input type="checkbox" :value="option.value" v-model="form.category_ids"  @change="form.get('/finances')"/>
-            <label for="jack">{{ option.name }}</label>
-        </template>
+            <label class="ml-1">{{ option.name }}</label>
+        </div>
 
         
     </form>
