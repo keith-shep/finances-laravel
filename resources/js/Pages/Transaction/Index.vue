@@ -13,7 +13,7 @@
             />
             <ImportCsv />
 
-            <button @click="router.post('/categorize')">categorize</button>
+            <Button @click="router.post('/categorize')">categorize</Button>
 
             <PieChart :data="pie_chart_data"/>
         </aside>
@@ -66,6 +66,7 @@ import ImportCsv from '../../Components/ImportCsv.vue';
 import PieChart from '../../Components/PieChart.vue';
 import Dropdown from '../../Components/Dropdown.vue';
 import Filters from '../../Components/Filters.vue';
+import Button from '../../Components/Button.vue';
 
 const props = defineProps({ 
   user: Object,
