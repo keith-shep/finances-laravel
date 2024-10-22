@@ -11,7 +11,8 @@
                 :from="from"
                 :category_ids="category_ids"
             />
-            <ImportCsv />
+            <ImportCsv :bank_accounts="bank_accounts"/>
+            
 
             <Button @click="router.post('/categorize')">categorize</Button>
 
@@ -78,6 +79,7 @@ const props = defineProps({
   pie_chart_data: Object,
   categories: Array,
   category_ids: Array,
+  bank_accounts: Array,
 })
 
 </script>

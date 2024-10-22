@@ -34,6 +34,7 @@ class TransactionController extends Controller
         $dictionary = $this->service->tranformToDictionary($transactions, 'category_id');
         $pie_chart_data = $this->service->formatPieChartData($dictionary);
         $categories = CategoryResource::collection(Category::all(['id', 'name']));
+        $bank_accounts = BankAccount::all();
         
         return Inertia::render('Transaction/Index', [
             'transactions' => $transactions,
@@ -41,7 +42,8 @@ class TransactionController extends Controller
             'to' => isset($to) ? $to->format('Y-m') : null,
             'pie_chart_data' => $pie_chart_data,
             'categories' => $categories,
-            'category_ids' => $category_ids
+            'category_ids' => $category_ids,
+            'bank_accounts' => $bank_accounts,
         ]);
     }
 
