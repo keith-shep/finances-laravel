@@ -19,7 +19,9 @@
         </select> -->
         
         <!-- <button class="block bg-blue-500 text-white rounded-full py-2 px-4" type="submit">Import</button> -->
-        <BankAccounts :options="bank_accounts"></BankAccounts>
+        <select v-model="form.selected_bank_account">
+            <option v-for="option in bank_accounts" :value="option.id">{{ option.name }}</option>
+        </select>
         <Button @click.prevent="form.post('/importCsv')">Import</Button>
     </form>
     
@@ -29,7 +31,6 @@
 import { useForm } from '@inertiajs/vue3'
 import { reactive, computed } from 'vue'
 import Button from './Button.vue';
-import BankAccounts from './BankAccounts.vue';
 
 function submit() {
   form.post('/importCsv')
@@ -41,8 +42,9 @@ const props = defineProps({
 
 const form = useForm({  
     file: null,
-    account_name: '',
-    account_type: '',
+    // account_name: '',
+    // account_type: '',
+    selected_bank_account: null
 })
 
 

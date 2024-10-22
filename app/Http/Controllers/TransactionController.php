@@ -54,12 +54,14 @@ class TransactionController extends Controller
             return 'error: please upload a csv file.';
         }
 
-        $account_name = $request->account_name;
-        $account_type = $request->account_type;
-        $bank_account = BankAccount::create([
-            'name' => $account_name,
-            'type' => $account_type,
-        ]);
+        $bank_account = BankAccount::find($request->selected_bank_account);
+
+        // $account_name = $request->account_name;
+        // $account_type = $request->account_type;
+        // $bank_account = BankAccount::create([
+        //     'name' => $account_name,
+        //     'type' => $account_type,
+        // ]);
 
         $starting_line_map = [
             'individual' => 18,
