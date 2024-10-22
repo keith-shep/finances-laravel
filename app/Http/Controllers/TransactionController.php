@@ -41,6 +41,9 @@ class TransactionController extends Controller
         $categories = CategoryResource::collection(Category::all(['id', 'name']));
         $bank_accounts = BankAccount::all();
         
+        if (empty($category_ids)) {
+            $category_ids = $categories->pluck('id');
+        }
         return Inertia::render('Transaction/Index', [
             'transactions' => $transactions,
             'from' => isset($from) ? $from->format('Y-m') : null,
