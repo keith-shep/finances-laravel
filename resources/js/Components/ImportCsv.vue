@@ -5,7 +5,7 @@
     </form> -->
 
     
-    <form @submit.prevent="submit">
+    <form>
         <label for='upload_csv'>Upload CSV:</label>
         <input id='upload_csv' class='ml-3' type="file" @input="form.file = $event.target.files[0]" accept=".csv"/>
         
@@ -18,7 +18,8 @@
             <option value="joint">Joint</option>
         </select>
         
-        <button class="block bg-blue-500 text-white rounded-full py-2 px-4" type="submit">Import</button>
+        <!-- <button class="block bg-blue-500 text-white rounded-full py-2 px-4" type="submit">Import</button> -->
+        <Button @click.prevent="form.post('/importCsv')">Import</Button>
     </form>
     
 </template>
@@ -26,7 +27,7 @@
 <script setup>
 import { useForm } from '@inertiajs/vue3'
 import { reactive, computed } from 'vue'
-
+import Button from './Button.vue';
 
 function submit() {
   form.post('/importCsv')
