@@ -26,6 +26,7 @@
                 <thead class="text-xs text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
                         <th class="px-6 py-3 whitespace-nowrap">Transaction Date</th>
+                        <th class="px-6 py-3">Bank Account</th>
                         <th class="px-6 py-3">Reference</th>
                         <th class="px-6 py-3">Debit Amount</th>
                         <th class="px-6 py-3">Credit Amount</th>
@@ -44,6 +45,7 @@
                 <tbody v-else>
                     <tr v-for="transaction in transactions" class="bg-white border-b">
                         <td class="px-6 py-3">{{ transaction.transaction_date }}</td>
+                        <td class="px-6 py-3">{{ transaction.bank_account.name }}</td>
                         <td class="px-6 py-3">{{ transaction.reference }}</td>
                         <td class="px-6 py-3">{{ transaction.debit_amount }}</td>
                         <td class="px-6 py-3">{{ transaction.credit_amount }}</td>

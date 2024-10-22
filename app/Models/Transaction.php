@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Transaction extends Model
 {
@@ -27,5 +28,9 @@ class Transaction extends Model
         return [
             'transaction_date' => 'datetime:Y-m-d',
         ];
+    }
+
+    public function bankAccount(): BelongsTo {
+        return $this->belongsTo(BankAccount::class);
     }
 }

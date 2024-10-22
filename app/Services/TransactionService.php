@@ -15,7 +15,8 @@ use Illuminate\Support\Facades\DB;
 class TransactionService
 {
     public function getTransactions(?Carbon $from, ?Carbon $to, ?array $category_ids, string $sort_by = ''){
-        $transactions = Transaction::when(!empty($from), fn ($query) => $query->where('transaction_date', '>=', $from->startOfMonth()))
+        $transactions = Transaction::with('bankAccount')
+                                    ->when(!empty($from), fn ($query) => $query->where('transaction_date', '>=', $from->startOfMonth()))
                                     ->when(!empty($to), fn ($query) => $query->where('transaction_date', '<=', $to->endOfMonth()))
                                     ->when(!empty($category_ids), fn ($query) => $query->whereIn('category_id', $category_ids))
                                     ->when(!empty($sort_by), fn ($query) => $query->orderBy($sort_by, 'desc'))
@@ -35,14 +36,26 @@ class TransactionService
                     continue;
                 }
 
-                $date = Carbon::parse($entry[0]);
-                $reference = $entry[1] ?? '';
-                $debit_amount = isset($entry[2]) ? (float) $entry[2] : 0;
-                $credit_amount = isset($entry[3]) ? (float) $entry[3] : 0;
-                $ref1 = $entry[4] ?? '';
-                $ref2 = $entry[5] ?? '';
-                $ref3 = $entry[6] ?? '';
-
+                if ($bank_account->type == 'individual') {
+                    $date = Carbon::parse($entry[0]);
+                    $reference = $entry[1] ?? '';
+                    $debit_amount = isset($entry[2]) ? (float) $entry[2] : 0;
+                    $credit_amount = isset($entry[3]) ? (float) $entry[3] : 0;
+                    $ref1 = $entry[4] ?? '';
+                    $ref2 = $entry[5] ?? '';
+                    $ref3 = $entry[6] ?? '';
+                    $raw_string = $date . $reference . $debit_amount . $credit_amount . $ref1 . $ref2 . $ref3;
+                } else if ($bank_account->type == 'joint') {
+                    $date = Carbon::parse($entry[0]);
+                    $reference = $entry[1] ?? '';
+                    $debit_amount = isset($entry[4]) ? (float) $entry[4] : 0;
+                    $credit_amount = isset($entry[5]) ? (float) $entry[5] : 0;
+                    $ref1 = $entry[6] ?? '';
+                    $ref2 = $entry[7] ?? '';
+                    $ref3 = $entry[8] ?? '';
+                    
+                }
+                
                 $raw_string = $date . $reference . $debit_amount . $credit_amount . $ref1 . $ref2 . $ref3;
                 $base64_encoded = base64_encode($raw_string);
 
