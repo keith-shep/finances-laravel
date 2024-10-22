@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -32,5 +33,33 @@ class Transaction extends Model
 
     public function bankAccount(): BelongsTo {
         return $this->belongsTo(BankAccount::class);
+    }
+
+    protected function creditAmount(): Attribute
+    {
+        return Attribute::make(
+            get: function (float $amount) {
+                if ($this->bankAccount->type == 'individual') {
+                    return $amount;
+                } else if ($this->bankAccount->type == 'joint') {
+                    return $amount / 2;
+                }
+                return $amount;
+            }
+        );
+    }
+
+    protected function debitAmount(): Attribute
+    {
+        return Attribute::make(
+            get: function (float $amount) {
+                if ($this->bankAccount->type == 'individual') {
+                    return $amount;
+                } else if ($this->bankAccount->type == 'joint') {
+                    return $amount / 2;
+                }
+                return $amount;
+            }
+        );
     }
 }
