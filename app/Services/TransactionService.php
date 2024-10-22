@@ -16,8 +16,8 @@ class TransactionService
 {
     public function getTransactions(Carbon $from, Carbon $to, ?array $category_ids, string $sort_by = ''){
         $transactions = Transaction::with('bankAccount')
-                                    ->when(!empty($from), fn ($query) => $query->where('transaction_date', '>=', $from))
-                                    ->when(!empty($to), fn ($query) => $query->where('transaction_date', '<=', $to))
+                                    ->where('transaction_date', '>=', $from)
+                                    ->where('transaction_date', '<=', $to)
                                     ->when(!empty($category_ids), fn ($query) => $query->whereIn('category_id', $category_ids))
                                     ->when(!empty($sort_by), fn ($query) => $query->orderBy($sort_by, 'desc'))
                                     ->get();
