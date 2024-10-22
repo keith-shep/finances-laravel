@@ -117,8 +117,9 @@ class TransactionController extends Controller
         return to_route('finances.index', [], 303);
     }
 
-    public function destroy(string $id)
+    public function destroy()
     {
-        //
+        Transaction::truncate();
+        return to_route('finances.index', [], 303);
     }
 }

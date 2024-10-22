@@ -15,6 +15,8 @@
 
             <Button @click="router.post('/categorize')">categorize</Button>
 
+            <Button @click="router.delete('/transactions')">reset entries</Button>
+
             <PieChart :data="pie_chart_data"/>
         </aside>
 

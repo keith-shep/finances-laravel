@@ -21,5 +21,7 @@ Route::get('/', function () {
 
 Route::get('/finances', [TransactionController::class, 'index'])->name('finances.index');
 Route::put('/finances/{transaction}', [TransactionController::class, 'update'])->name('finances.update');
+Route::delete('/transactions', [TransactionController::class, 'destroy'])->name('transactions.delete');
+
 Route::post('/importCsv', [TransactionController::class, 'importCsv']);
 Route::post('/categorize', [TransactionController::class, 'categorize']);
