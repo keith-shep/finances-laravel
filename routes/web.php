@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,3 +26,6 @@ Route::delete('/transactions', [TransactionController::class, 'destroy'])->name(
 
 Route::post('/importCsv', [TransactionController::class, 'importCsv']);
 Route::post('/categorize', [TransactionController::class, 'categorize']);
+
+
+Route::get('/categories/index', [CategoryController::class, 'index']);

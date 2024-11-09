@@ -2,26 +2,28 @@
 
 namespace App\Http\Controllers;
 use App\Http\Resources\CategoryResource;
+use App\Models\Category;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 
-class TransactionController extends Controller
+class CategoryController extends Controller
 {
 
     
 
     public function index(Request $request)
     {
-        //
+        $rows = Category::all(['id', 'name']);
+        return view('category.index', ['rows' => $rows]);
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    // public function create()
-    // {
-    //     //
-    // }
+    public function create()
+    {
+        return view('category.create');
+    }
 
      
     public function store(Request $request)
