@@ -11,12 +11,12 @@
                 :from="from"
                 :category_ids="category_ids"
             />
-            <ImportCsv :bank_accounts="bank_accounts"/>
+            <ImportCsv class="my-2" :bank_accounts="bank_accounts"/>
             
 
-            <Button @click="router.post('/categorize')">categorize</Button>
+            <Button class="my-2" @click="router.post('/categorize')">categorize</Button>
 
-            <Button @click="router.delete('/transactions')">reset entries</Button>
+            <Button class="my-2" @click="router.delete('/transactions')">reset entries</Button>
 
             <PieChart :data="pie_chart_data"/>
         </aside>
