@@ -37,3 +37,4 @@ Route::get('/categories/{category}/edit/{filter}', [FilterController::class, 'ed
 Route::get('/categories/{category}/new', [FilterController::class, 'create']);
 Route::post('/categories/{category}/filters', [FilterController::class, 'store']);
 Route::put('/filters/{filter}', [FilterController::class, 'update']);
+Route::delete('/filters/{filter}', [FilterController::class, 'destroy']);

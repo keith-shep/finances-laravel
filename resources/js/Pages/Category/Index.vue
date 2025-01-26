@@ -35,7 +35,7 @@
                                     <a :href="`/categories/${category_id}/edit/${row.id}`">edit</a>
                                 </li>
                                 <li>
-                                    delete
+                                    <a href="javascript:void(0)" @click.prevent="form.delete(`/filters/${row.id}`)" >delete</a>
                                 </li>
                             </ul>
                         </td>
@@ -53,6 +53,10 @@ const props = defineProps({
     category_id: Number,
     category_name: String,
     rows: Array,
+})
+
+const form = useForm({  
+    // selected: props.selected_category_id ?? null
 })
 
 

@@ -72,8 +72,9 @@ class FilterController extends Controller
         ]);   
     }
 
-    public function destroy(string $id)
+    public function destroy(int $filter_id)
     {
-        //
+        $filter = CategoryFilter::find($filter_id);
+        $filter->delete();
     }
 }
