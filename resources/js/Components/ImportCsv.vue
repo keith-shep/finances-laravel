@@ -3,10 +3,10 @@
     <form>
         <label for='upload_csv'>Upload CSV:</label>
         <input id='upload_csv' class='ml-3' type="file" @input="form.file = $event.target.files[0]" accept=".csv"/>
-        <select v-model="form.selected_bank_account">
+        <select v-if="form.file" v-model="form.selected_bank_account">
             <option v-for="option in bank_accounts" :value="option.id">{{ option.name }}</option>
         </select>
-        <Button @click.prevent="form.post('/importCsv')" :disabled="!form.file">Import</Button>
+        <Button @click.prevent="form.post('/importCsv')" :disabled="!form.file || !form.selected_bank_account">Import</Button>
     </form>
     
 </template>
