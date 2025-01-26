@@ -5,6 +5,7 @@ use App\Http\Resources\CategoryResource;
 use App\Models\Category;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class CategoryController extends Controller
 {
@@ -35,7 +36,11 @@ class CategoryController extends Controller
     {
         $category = Category::find($category_id);
         $filters = $category->categoryFilters;
-        dd();
+
+        return Inertia::render('Category/Index', [
+            'category_name' => $category->name,
+            'rows' => $filters,
+        ]);
     }
 
     /**
