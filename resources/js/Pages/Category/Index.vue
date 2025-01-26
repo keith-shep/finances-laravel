@@ -1,9 +1,10 @@
 <template>
+    <Link class="block bg-blue-500 text-white rounded-full py-2 px-4 float-right" :href='`/categories/${category_id}/new`' as="button">Add new</Link>
     <Head :title="category_name" />
 
     <Link class="block bg-blue-500 text-white rounded-full py-2 px-4" href="/finances" as="button">Back</Link>
 
-    <h1>{{ category_name }}</h1> 
+    <h1>{{ category_name }}</h1>
     <div class="">
         <div class="col-span-4">
             <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
