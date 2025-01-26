@@ -22,7 +22,7 @@
         <select v-model="form.selected_bank_account">
             <option v-for="option in bank_accounts" :value="option.id">{{ option.name }}</option>
         </select>
-        <Button @click.prevent="form.post('/importCsv')">Import</Button>
+        <Button @click.prevent="form.post('/importCsv')" :disabled="!form.file">Import</Button>
     </form>
     
 </template>
