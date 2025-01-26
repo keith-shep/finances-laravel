@@ -4,7 +4,6 @@
     <h1>{{ filter.name }}</h1> 
     <div class="grid grid-cols-6 gap-4 ">
         <div class="col-span-4">
-            {{  }}
             <form>
                 <label class="block">column_name</label>
                 <input class="block" type="text" v-model="form.column_name">
@@ -12,7 +11,13 @@
                 <label class="block">pattern</label>
                 <input class="block" type="text" v-model="form.pattern"></input>
 
-                <button class="block bg-blue-500 text-white rounded-full py-2 px-4">update</button>
+                <button 
+                    class="block bg-blue-500 text-white rounded-full py-2 px-4" 
+                    type="submit" 
+                    @click.prevent="form.put(`/filters/${filter.id}`)"
+                >
+                    update
+                </button>
             </form>
         </div>
     </div>
