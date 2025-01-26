@@ -1,6 +1,8 @@
 <template>
     <Head :title="category_name" />
 
+    <Link class="block bg-blue-500 text-white rounded-full py-2 px-4" href="/finances" as="button">Back</Link>
+
     <h1>{{ category_name }}</h1> 
     <div class="grid grid-cols-6 gap-4 ">
         <div class="col-span-4">
@@ -44,7 +46,7 @@
 </template>
 
 <script setup>
-import { Head, useForm } from '@inertiajs/vue3'
+import { Head, useForm, Link } from '@inertiajs/vue3'
 
 const props = defineProps({ 
     category_id: Number,
