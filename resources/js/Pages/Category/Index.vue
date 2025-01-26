@@ -26,9 +26,13 @@
                             <a href="javascript:void(0)" @click="toggleDropdown">
                                 <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
                             </a>
-                            <ul id="dropdown" class="hidden">
-                                <li>edit</li>
-                                <li>delete</li>
+                            <ul id="dropdown" class="hidden absolute">
+                                <li>
+                                    <a href="">edit</a>
+                                </li>
+                                <li>
+                                    delete
+                                </li>
                             </ul>
                         </td>
                     </tr>
