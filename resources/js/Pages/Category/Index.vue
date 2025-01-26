@@ -19,15 +19,15 @@
                 </template>
 
                 <tbody v-else>
-                    <tr v-for="row in rows" class="bg-white border-b">
+                    <tr v-for="row, index in rows" class="bg-white border-b">
                         <td class="px-6 py-3">{{ row.id }}</td>
                         <td class="px-6 py-3">{{ row.column_name }}</td>
                         <td class="px-6 py-3">{{ row.pattern }}</td>
                         <td class="px-6 py-3">
-                            <a href="javascript:void(0)" @click="toggleDropdown">
+                            <a href="javascript:void(0)" @click="() => toggleDropdown(index)">
                                 <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
                             </a>
-                            <ul id="dropdown" class="hidden absolute">
+                            <ul :id="`dropdown-${index}`" class="hidden absolute">
                                 <li>
                                     <a href="">edit</a>
                                 </li>
@@ -52,8 +52,8 @@ const props = defineProps({
 })
 
 
-function toggleDropdown() {
-    const dropdown = document.querySelector('#dropdown');
+function toggleDropdown(index) {
+    const dropdown = document.querySelector(`#dropdown-${index}`);
     if (dropdown.style.display == 'block') {
         dropdown.style.display = 'none';
     } else {
