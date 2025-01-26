@@ -10,10 +10,10 @@
         <div class="col-span-4">
             <form>
                 <label class="block">column_name</label>
-                <input class="block" type="text" v-model="form.column_name">
+                <input class="block border-blue-500 border-2" type="text" v-model="form.column_name">
             
                 <label class="block">pattern</label>
-                <input class="block" type="text" v-model="form.pattern"></input>
+                <input class="block border-blue-500 border-2" type="text" v-model="form.pattern"></input>
 
                 <button 
                     class="block bg-blue-500 text-white rounded-full py-2 px-4" 
