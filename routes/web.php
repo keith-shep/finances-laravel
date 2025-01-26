@@ -34,3 +34,4 @@ Route::get('/categories/', [CategoryController::class, 'index']);
 Route::get('/categories/{category}', [CategoryController::class, 'show']);
 
 Route::get('/categories/{category}/edit/{filter}', [FilterController::class, 'edit']);
+Route::put('/filters/{filter}', [FilterController::class, 'update']);

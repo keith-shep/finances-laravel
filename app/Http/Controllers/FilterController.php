@@ -47,9 +47,13 @@ class FilterController extends Controller
         ]);
     }
 
-    public function update(Request $request, Transaction $transaction)
+    public function update(Request $request, $filter_id)
     {
-        //
+        $filter = CategoryFilter::find($filter_id);
+        $filter->update([
+            'column_name' => $request->column_name,
+            'pattern' => $request->pattern,
+        ]);   
     }
 
     public function destroy(string $id)

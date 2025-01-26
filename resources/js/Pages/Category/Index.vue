@@ -29,7 +29,7 @@
                             </a>
                             <ul :id="`dropdown-${index}`" class="hidden absolute">
                                 <li>
-                                    <a :href="`/categories/9/edit/${row.id}`">edit</a>
+                                    <a :href="`/categories/${category_id}/edit/${row.id}`">edit</a>
                                 </li>
                                 <li>
                                     delete
@@ -47,6 +47,7 @@
 import { Head, useForm } from '@inertiajs/vue3'
 
 const props = defineProps({ 
+    category_id: Number,
     category_name: String,
     rows: Array,
 })

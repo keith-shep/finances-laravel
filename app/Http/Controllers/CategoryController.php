@@ -38,6 +38,7 @@ class CategoryController extends Controller
         $filters = $category->categoryFilters;
 
         return Inertia::render('Category/Index', [
+            'category_id' => $category->id,
             'category_name' => $category->name,
             'rows' => $filters,
         ]);
