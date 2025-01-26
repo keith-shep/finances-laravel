@@ -29,7 +29,7 @@
                             </a>
                             <ul :id="`dropdown-${index}`" class="hidden absolute">
                                 <li>
-                                    <a href="">edit</a>
+                                    <a :href="`/categories/9/edit/${row.id}`">edit</a>
                                 </li>
                                 <li>
                                     delete

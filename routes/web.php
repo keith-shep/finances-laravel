@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\FilterController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -30,3 +32,5 @@ Route::post('/categorize', [TransactionController::class, 'categorize']);
 
 Route::get('/categories/', [CategoryController::class, 'index']);
 Route::get('/categories/{category}', [CategoryController::class, 'show']);
+
+Route::get('/categories/{category}/edit/{filter}', [FilterController::class, 'edit']);
