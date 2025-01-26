@@ -9,10 +9,9 @@
             <input type="month" id="end" name="to" v-model="form.to" min="2024-01" max="2024-12" @change="form.get('/finances')"/>
         </div>
 
-        
         <div v-for="option in options">
             <input type="checkbox" :value="option.value" v-model="form.category_ids"  @change="form.get('/finances')"/>
-            <label class="ml-1">{{ option.name }}</label>
+            <label class="ml-1"><a class="underline" :href="`/categories/${option.value}`">{{ option.name }}</a></label>
         </div>
 
         
