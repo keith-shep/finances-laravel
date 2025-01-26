@@ -1,8 +1,6 @@
 <template>
     <Head :title="filter.name" />
 
-    
-
     <Link class="block bg-blue-500 text-white rounded-full py-2 px-4" :href="`/categories/${filter.category_id}`" as="button">Back</Link>
 
     <h1>{{ filter.name }}</h1> 
@@ -31,9 +29,7 @@
 import { Head, useForm, Link } from '@inertiajs/vue3'
 
 const props = defineProps({ 
-    filter: Object
-    // category_name: String,
-    // rows: Array,
+    filter: Object,
 })
 
 
