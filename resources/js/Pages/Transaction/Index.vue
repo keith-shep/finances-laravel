@@ -79,7 +79,7 @@ const props = defineProps({
   from: String,
   to: String,
   pie_chart_data: Object,
-  categories: Array,
+  categories: Object,
   category_ids: Array,
   bank_accounts: Array,
 })
