@@ -22,6 +22,15 @@
                         <td class="px-6 py-3">{{ row.id }}</td>
                         <td class="px-6 py-3">{{ row.column_name }}</td>
                         <td class="px-6 py-3">{{ row.pattern }}</td>
+                        <td class="px-6 py-3">
+                            <a href="javascript:void(0)" @click="toggleDropdown">
+                                <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                            </a>
+                            <ul id="dropdown" class="hidden">
+                                <li>edit</li>
+                                <li>delete</li>
+                            </ul>
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -38,4 +47,12 @@ const props = defineProps({
 })
 
 
+function toggleDropdown() {
+    const dropdown = document.querySelector('#dropdown');
+    if (dropdown.style.display == 'block') {
+        dropdown.style.display = 'none';
+    } else {
+        dropdown.style.display = 'block';
+    };
+}
 </script>
