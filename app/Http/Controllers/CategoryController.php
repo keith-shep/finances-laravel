@@ -31,9 +31,11 @@ class CategoryController extends Controller
         //
     }
 
-    public function show(string $id)
+    public function show($category_id)
     {
-        //
+        $category = Category::find($category_id);
+        $filters = $category->categoryFilters;
+        dd();
     }
 
     /**

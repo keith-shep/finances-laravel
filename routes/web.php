@@ -28,4 +28,5 @@ Route::post('/importCsv', [TransactionController::class, 'importCsv']);
 Route::post('/categorize', [TransactionController::class, 'categorize']);
 
 
-Route::get('/categories/index', [CategoryController::class, 'index']);
+Route::get('/categories/', [CategoryController::class, 'index']);
+Route::get('/categories/{category}', [CategoryController::class, 'show']);
