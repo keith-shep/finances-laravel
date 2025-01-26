@@ -10,6 +10,7 @@
                         <th class="px-6 py-3 whitespace-nowrap">Id</th>
                         <th class="px-6 py-3">Column Name</th>
                         <th class="px-6 py-3">Pattern</th>
+                        <th class="px-6 py-3"></th>
                     </tr>
                 </thead>
 
