@@ -4,7 +4,7 @@
     <Link class="block bg-blue-500 text-white rounded-full py-2 px-4" href="/finances" as="button">Back</Link>
 
     <h1>{{ category_name }}</h1> 
-    <div class="grid grid-cols-6 gap-4 ">
+    <div class="">
         <div class="col-span-4">
             <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                 <thead class="text-xs text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
