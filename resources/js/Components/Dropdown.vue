@@ -1,6 +1,6 @@
 <template>    
     <form @change="form.put(`/finances/${transaction_id}`)">
-        <select v-model="form.selected">
+        <select disabled v-model="form.selected">
             <option v-for="option in options" :value="option.value">{{ option.name }}</option>
         </select>    
         
