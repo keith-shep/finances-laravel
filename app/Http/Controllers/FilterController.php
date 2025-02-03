@@ -72,9 +72,11 @@ class FilterController extends Controller
         ]);   
     }
 
-    public function destroy(int $filter_id)
+    public function destroy(int $category_id, int $filter_id)
     {
         $filter = CategoryFilter::find($filter_id);
         $filter->delete();
+
+        return to_route('categories.show', ['category' => $category_id], 303);
     }
 }

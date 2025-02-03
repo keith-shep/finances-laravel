@@ -31,10 +31,10 @@ Route::post('/categorize', [TransactionController::class, 'categorize']);
 
 
 Route::get('/categories/', [CategoryController::class, 'index']);
-Route::get('/categories/{category}', [CategoryController::class, 'show']);
+Route::get('/categories/{category}', [CategoryController::class, 'show'])->name('categories.show');
 
 Route::get('/categories/{category}/edit/{filter}', [FilterController::class, 'edit']);
 Route::get('/categories/{category}/new', [FilterController::class, 'create']);
 Route::post('/categories/{category}/filters', [FilterController::class, 'store']);
 Route::put('/filters/{filter}', [FilterController::class, 'update']);
-Route::delete('/filters/{filter}', [FilterController::class, 'destroy']);
+Route::delete('/categories/{category}/filters/{filter}', [FilterController::class, 'destroy']);

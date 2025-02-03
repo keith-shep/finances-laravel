@@ -35,7 +35,7 @@
                                     <a :href="`/categories/${category_id}/edit/${row.id}`">edit</a>
                                 </li>
                                 <li>
-                                    <a href="javascript:void(0)" @click.prevent="form.delete(`/filters/${row.id}`)" >delete</a>
+                                    <a href="javascript:void(0)" @click.prevent="form.delete(`/categories/${category_id}/filters/${row.id}`)" >delete</a>
                                 </li>
                             </ul>
                         </td>
