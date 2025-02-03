@@ -32,11 +32,10 @@ class CategoryController extends Controller
         //
     }
 
-    public function show($category_id)
+    public function show(Category $category)
     {
-        $category = Category::find($category_id);
         $filters = $category->categoryFilters;
-
+        
         return Inertia::render('Category/Index', [
             'category_id' => $category->id,
             'category_name' => $category->name,
