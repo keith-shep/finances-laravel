@@ -14,10 +14,8 @@
             <ImportCsv class="my-2" :bank_accounts="bank_accounts"/>
             
 
-            <Button class="my-2" @click="router.post('/categorize')">categorize</Button>
-
-            <Button class="my-2" @click="router.delete('/transactions')">reset entries</Button>
-
+            <Button class="my-2" @click="router.post('/categorize')">refresh</Button>
+            <Button class="my-2" @click="router.delete('/transactions')">clear all entries</Button>
             <PieChart :data="pie_chart_data"/>
         </aside>
 
