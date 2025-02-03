@@ -15,7 +15,9 @@
             
             <Button class="my-2 bg-blue-500 disabled:bg-blue-300" @click="router.post('/categorize')">refresh</Button>
             <Button class="my-2 bg-red-500 disabled:bg-red-300" @click="router.delete('/transactions')">clear all entries</Button>
-            <PieChart :data="pie_chart_data"/>
+
+            <!-- <PieChart :data="pie_chart_data"/> -->
+            <BarChart :data="pie_chart_data"/>
         </aside>
 
         <div class="col-span-4">
@@ -66,6 +68,7 @@ import { Head, useForm } from '@inertiajs/vue3'
 import { reactive, computed } from 'vue'
 import ImportCsv from '../../Components/ImportCsv.vue';
 import PieChart from '../../Components/PieChart.vue';
+import BarChart from '../../Components/Charts/BarChart.vue';
 import Dropdown from '../../Components/Dropdown.vue';
 import Filters from '../../Components/Filters.vue';
 import Button from '../../Components/Button.vue';
