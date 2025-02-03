@@ -56,18 +56,16 @@ class FilterController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Category $category, $filter_id)
+    public function edit(Category $category, CategoryFilter $filter)
     {
-        $filter = CategoryFilter::find($filter_id);
         return Inertia::render('Filter/Edit', [
             'filter' => $filter,
             'category_id' => $category->id,
         ]);
     }
 
-    public function update(Request $request, Category $category, int $filter_id)
+    public function update(Request $request, Category $category, CategoryFilter $filter)
     {
-        $filter = CategoryFilter::find($filter_id);
         $filter->update([
             'column_name' => $request->column_name,
             'pattern' => $request->pattern,
@@ -75,9 +73,8 @@ class FilterController extends Controller
         return to_route('categories.show', ['category' => $category->id], 303);
     }
 
-    public function destroy(Category $category, int $filter_id)
+    public function destroy(Request $request, Category $category, CategoryFilter $filter)
     {
-        $filter = CategoryFilter::find($filter_id);
         $filter->delete();
 
         return to_route('categories.show', ['category' => $category->id], 303);
