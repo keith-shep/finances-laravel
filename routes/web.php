@@ -30,11 +30,16 @@ Route::post('/importCsv', [TransactionController::class, 'importCsv']);
 Route::post('/categorize', [TransactionController::class, 'categorize']);
 
 
-Route::get('/categories/', [CategoryController::class, 'index']);
-Route::get('/categories/{category}', [CategoryController::class, 'show'])->name('categories.show');
+Route::prefix('categories')->name('categories.')->group(function () {
+    Route::get('/', [CategoryController::class, 'index']);
+    Route::get('/{category}', [CategoryController::class, 'show'])->name('show');
+    Route::get('/{category}/edit/{filter}', [FilterController::class, 'edit']);
+    Route::get('/{category}/new', [FilterController::class, 'create']);
+    Route::post('/{category}/filters', [FilterController::class, 'store']);
+    Route::put('/{category}/filters/{filter}', [FilterController::class, 'update']);
+    Route::delete('/{category}/filters/{filter}', [FilterController::class, 'destroy']);
+});
 
-Route::get('/categories/{category}/edit/{filter}', [FilterController::class, 'edit']);
-Route::get('/categories/{category}/new', [FilterController::class, 'create']);
-Route::post('/categories/{category}/filters', [FilterController::class, 'store']);
-Route::put('/categories/{category}/filters/{filter}', [FilterController::class, 'update']);
-Route::delete('/categories/{category}/filters/{filter}', [FilterController::class, 'destroy']);
+
+
+
