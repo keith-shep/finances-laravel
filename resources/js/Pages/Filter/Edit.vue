@@ -19,7 +19,7 @@
                 <button v-if="mode == 'edit'"
                     class="block bg-blue-500 text-white rounded-full py-2 px-4" 
                     type="submit" 
-                    @click.prevent="form.put(`/filters/${filter.id}`)"
+                    @click.prevent="form.put(`/categories/${category_id}/filters/${filter.id}`)"
                 >
                     update
                 </button>

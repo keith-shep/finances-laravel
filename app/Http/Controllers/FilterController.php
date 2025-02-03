@@ -41,6 +41,7 @@ class FilterController extends Controller
                 'column_name' => $validated['column_name'],
                 'pattern' => $validated['pattern'],
             ]);
+            return to_route('categories.show', ['category' => $category_id], 303);
         } catch (\Exception $e) {
             dd($e);
         }   
@@ -63,13 +64,14 @@ class FilterController extends Controller
         ]);
     }
 
-    public function update(Request $request, $filter_id)
+    public function update(Request $request, int $category_id, int $filter_id)
     {
         $filter = CategoryFilter::find($filter_id);
         $filter->update([
             'column_name' => $request->column_name,
             'pattern' => $request->pattern,
-        ]);   
+        ]);
+        return to_route('categories.show', ['category' => $category_id], 303);
     }
 
     public function destroy(int $category_id, int $filter_id)
